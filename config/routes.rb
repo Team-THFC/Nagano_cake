@@ -29,8 +29,7 @@ Rails.application.routes.draw do
         get 'finish'
       end
     end
-    get "search" => 'genres#search'
-    get "search_genre" => "genres#search_genre"
+
     resources :addresses,only:[:index, :create, :destroy, :edit, :update]
   end
 
