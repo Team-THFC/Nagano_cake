@@ -2,9 +2,10 @@
   <div class="row">
   <p id="notice"></p>
     <h4>注文履歴詳細</h4>
+    <table>
     　<div class="form-grop">
         <label for="order-name">購入者</label>
-        <%= @order..member.last_name.first_name %>
+        <%= @order.member.last_name %><%= @order.member.first_name %>
       </div>
       <div class="form-grop">
         <label for="order-datetime">注文日</label>
@@ -12,7 +13,8 @@
       </div>
       <div class="form-grop">
         <label for="order-address">配送先</label>
-        <%= @address.postal_code.address %>
+        <%= @order.postal_code %><%= @order.address %>
+        <%= @order.name %>
       </div>
       <div class="form-grop">
         <label for="order-pay">支払方法</label>
@@ -24,6 +26,7 @@
         <%= select :status,:name,Order.statuses.values.to_a %>
         <%= link_to "更新", class: "btn btn-success" %>
       </div>
+    </table>
 
       <thead>
         <tr>
@@ -36,16 +39,42 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= @order.name %></td>
-          <td><%= @order.shipping_price %></td>
-          <td><%= @order.quantity %></td>
-          <td><%= @order. %></td>
-          <td>
-            <%= select :production_status,:name,OrderProduct.statuses.keys.to_a %>
-            <%= select :production_status,:name,OrderProduct.statuses.values.to_a %>
-          </td>
+          <% @orders.each do |order| %>
+            <td><%= order.order_product.product.name %></td>
+            <td>
+              <% @product_price = order_product.tax_out_price * 1.1 %>
+              <%= @product_price.floor.to_s(:delimited) %>
+            </td>
+            <td><%= order.order_products.quantity %></td>
+            <td><%= order.production_status %></td>
+            <td>
+              <%= select :production_status,:name,OrderProduct.statuses.keys.to_a %>
+              <%= select :production_status,:name,OrderProduct.statuses.values.to_a %>
+              <%= link_to "更新", class: "btn btn-success" %>
+            </td>
+          <% end %>
         </tr>
       </tbody>
+      
+      <table>
+        
+      </table>
+      <div class="form-grop">
+        <%= f.label :"商品合計" %>
+        <% @total = @product_price * cart.quantity.to_i %>
+        ￥<%= @total.floor.to_s(:delimited) %>
+        <!--合計金額の計算-->
+        <% @sum += @total  %>
+      </div>
+      <div class="form-grop">
+        <%= f.label :"送料" %>
+        <%= @order.shipping_price %> 円
+      </div>
+      <div class="form-grop">
+        <%= f.label :"請求金額合計" %>
+        <%= @order.total_payment + @order.shipping_price %>円
+      </div>
+
 
   </div>
 </div>

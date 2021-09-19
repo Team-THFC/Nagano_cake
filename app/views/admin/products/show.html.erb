@@ -1,39 +1,60 @@
-<div class="container px-5 px-sm-0">
+<div class="container mt-5 " style="margin-bottom:250px;">
+  <h4>商品詳細</h4>
   <div class="row">
-  　<div class='col-md-5'>
-      <p id="notice"></p>
-      <h4>商品詳細</h4>
-      <%= attachment_image_tag @product, :image, size: "250x200" %>
+  　<div class='col-sm-5'>
+　　　<%= attachment_image_tag @product, :image, size: "300x200" %>
     </div>
 
-    <div class='col-md-5'>
-      <div class="form-grop">
-        <label for="product-explanation">商品名</label>
-        <%= @product.name %>
-      </div>
-      <div class="form-grop">
-        <label for="product-name">商品説明</label>
-        <%= @product.explanation %>
-   　　 </div>
-   　　<div class="form-grop">
-        <label for="product-genre">ジャンル</label>
-        <%= @product.genre.genre_name %>
-   　  </div>
-   　　<div class="form-grop">
-        <label for="product-price">税込価格（税抜価格）</label>
-        <%= @product.tax_out_price %>円
-   　  </div>
-   　　<div class="form-grop">
-        <label for="product-status">販売ステータス</label>
-        <% if @product.is_active == true %>
-          <i class="text-success">販売中</i>
-        <% else  product.is_active == false %>
-          <i class="fas fa-bullseye blue">販売中止中</i>
-        <% end %>
-   　  </div>
-   　　<div class="form-grop">
-        <%= link_to "編集する",edit_admin_product_path(@product.id), class: "btn btn-success" %>
-   　  </div>
+    <div class='col-sm-2'>
+      <div class = "field">
+        <p>商品名</p>
+      </div><br>
+      <div class = "field">
+        <p>商品説明</p>
+      </div><br>
+      <div class = "field">
+        <p>ジャンル</p>
+      </div><br>
+      <div class = "field">
+        <p>税込価格<br>（税抜価格）</p>
+      </div><br>
+      <div class = "field">
+        <p>販売ステータス</p>
+      </div><br>
     </div>
+
+    <div class = "col-sm-4">
+      <div class = "field">
+        <p><%=@product.name %></p>
+      </div><br>
+      <div class = "field">
+        <p><%= @product.explanation %></p>
+      </div><br>
+      <div class = "field">
+        <p><%= @product.genre.genre_name %></p>
+      </div><br>
+      <div class = "field">
+        <p>
+          <% @product_price = @product.tax_out_price * 1.1 %>
+        　<%= @product_price.floor.to_s(:delimited) %>
+        　(<%= @product.tax_out_price.floor.to_s(:delimited) %>)円
+        </p>
+      </div><br><br>
+      <div class = "field">
+        <p>
+          <% if @product.is_active == true %>
+            <i class="text-success">販売中</i>
+          <% else  product.is_active == false %>
+            <i class="fas fa-bullseye blue">販売中止中</i>
+          <% end %>
+        </p>
+      </div><br>
+
+      <div class="form-grop">
+        <%= link_to "編集する",edit_admin_product_path(@product.id), class: "btn btn-success" %>
+      </div>
+    </div>
+
+
   </div>
 </div>

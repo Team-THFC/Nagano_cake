@@ -1,8 +1,10 @@
 class Admin::OrdersController < ApplicationController
 
   def show
+    @orders = Order.all
     @order = Order.find(params[:id])
-    @address = Address.find(params[:address_id])
+    @orders_params = OrderProduct.all
+   
   end
 
   private
