@@ -1,0 +1,31 @@
+<div class = "container">
+  <h2 class= "head-line title_h2 text-dark p-1 m-5 rounded-lg border border-dark">注文情報</h2>
+  <div class = "row">
+    <div class = "col-sm-9">
+      <% if @member_cart_products.exists? %>
+        <table class = "table table-hover mt-5">
+          <thead class="bg-light ">
+            <tr>
+              <th>商品名</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @member_cart_products.each do |cart|  %>
+              <tr>
+                <td>
+                  
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

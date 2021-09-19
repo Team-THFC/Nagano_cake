@@ -7,13 +7,26 @@ class Public::OrdersController < ApplicationController
   	@addresses = Address.where(member: current_member)
   end
 
+  def confirm
+    @order = Order.new
+    @member_cart_products = CartProduct.where(member_id: current_member.id)
+  end
+
+  def create
+
+  end
+
+  def finish
+
+  end
+
   def index
     @orders = current_member.orders
   end
 
   def show
-    @order = Order.find(params[:id])
-    @order_products = @order.order_products
+    #@order = Order.find(params[:id])
+    #@order_products = @order.order_products
   end
 
    private
