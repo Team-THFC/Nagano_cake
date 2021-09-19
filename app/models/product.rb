@@ -7,4 +7,10 @@ class Product < ApplicationRecord
   attachment :image
   default_scope -> { order(id: :desc) }
 
+
+# 検索用のメソッド定義(部分一致のみ)
+  def self.search(keyword)
+    where(["name like?","%#{keyword}%" ])
+  end
+
 end

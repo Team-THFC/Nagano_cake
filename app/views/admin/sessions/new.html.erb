@@ -6,7 +6,7 @@
        <%= form_with model: @admin, url:  admin_session_path,local: true do |f| %>
         <div class="field">
           <%= f.label :"メールアドレス", class: "col-sm-2 control-label" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-8 form-control-static" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", class: "col-sm-8 form-control-static" %>
         </div>
 
         <div class="field">

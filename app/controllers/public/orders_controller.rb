@@ -8,12 +8,25 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.new
-    @member_cart_products = CartProduct.where(member_id: current_member.id)
+    @order = Order.new(order_params)
+    @member_cart_products = CartProduct.where(member: current_member)
+    if params[:order][:addresses] == "residence"
+      
+    elsif params[:order][:addresses] == "address_params"
+
+    elsif params[:order][:addresses] == "new_address"
+
+    unless @order.valid?
+      render :new
+    end
+    end
   end
 
   def create
-
+    @order = Order.new(order_params)
+    if @order.save
+      redirect_to finish_public_orders_path
+    end
   end
 
   def finish
@@ -22,6 +35,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_member.orders
+    @orders = Order.all
   end
 
   def show

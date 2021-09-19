@@ -63,6 +63,13 @@
           </li>
           <% end %>
         </ul>
+        <div>
+          <div class="d-inline">
+            <%= form_with url: public_search_path, method: :get,  local: true do |f|%>
+            <%= f.text_field :keyword, value: @keyword ,placeholder: "Search",class: "form-control " ,id: "form-control"%>
+            <% end %>
+          </div>
+        </div>
       </nav>
     </div>
   </nav>
