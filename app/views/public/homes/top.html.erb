@@ -26,8 +26,8 @@
               <%= attachment_image_tag product,:image ,:fill,150,100,fallback: "no_image.png",size: "150x100" %>
             </div>
             <!--商品ネーム-->
-            <div class="">
-              <%= link_to public_product_path(product) do %>
+            <div>
+              <%= link_to public_product_path(product),class:"text-dark" do%>
                 <%= product.name %>
               <% end %>
             </div>

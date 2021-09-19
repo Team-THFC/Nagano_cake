@@ -2,7 +2,7 @@
   <h2 class= "head-line title_h2 text-dark p-1 m-5 rounded-lg border border-dark">注文情報</h2>
   <div class = "row">
     <div class = "col-sm-9">
-      <% if @member_cart_products.exists? %>
+      </% if @member_cart_products.exists? %>
         <table class = "table table-hover mt-5">
           <thead class="bg-light ">
             <tr>
@@ -16,16 +16,56 @@
             <% @member_cart_products.each do |cart|  %>
               <tr>
                 <td>
-                  
+                  <%= attachment_image_tag cart.product,:image,:fill,50,50 ,fallback: "no_image.png",size: "50x50" %>
+                  <%= cart.product.name %>
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                  <% @product_price = cart.product.tax_out_price * 1.1 %>
+                  <%= @product_price.floor.to_s(:delimited)  %>
+                </td>
+                <td>
+                  <%= cart.quantity %>
+                </td>
+                <td>
+                  <% @total = @product_price * cart.quantity %>
+                  <%= @total.floor.to_s(:delimited) %>
+                </td>
               </tr>
             <% end %>
           </tbody>
         </table>
-      <% end %>
+
+      </% end %>
+    </div>
+    <div class = "col-xs-3 billing">
+      <table class = "table table-hover table-condensed table-bordered">
+        <tr>
+          <th>送料</th>
+          <td><%= @order.shipping_price %></td>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <td>
+            <%= @total %>
+          </td>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <td>
+            </% @billing = @order.shipping_price + @total %>
+            </%= @billing %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class = "col-sm-9">
+      <div class = "form-group">
+        <h2>支払方法</h2> <h4 class = "mt-3 ml-5"><%= @order.payment_method %></h4>
+      </div>
+      <div class = "form-group">
+        <h2>お届け先</h2>
+        <h4 class = "mt-3 ml-5"><%= "#{current_member.last_name}" %></h4>
+      </div>
     </div>
   </div>
 </div>
