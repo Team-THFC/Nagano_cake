@@ -11,7 +11,7 @@
         </button>
       </div>
       <!--カート内商品一覧-->
-      <table class="table table-hover mt-5">
+      <table class="table table-hover table-bordered mt-5">
         <thead class="thead-light">
           <tr>
             <th>商品名</th>
@@ -29,7 +29,7 @@
           <tr>
             <!--商品画像・名前（詳細画面へのリンク付き）-->
             <td>
-              <%= link_to public_product_path(cart.product) do %>
+              <%= link_to public_product_path(cart.product),class: "text-dark" do %>
                 <%= attachment_image_tag cart.product,:image,:fill,50,50 ,fallback: "no_image.png",size: "50x50" %>
                 <%= cart.product.name %>
               <% end %>
@@ -70,7 +70,7 @@
       </table>
       <!--合計金額用のテーブル-->
       <table align="right" style="width:350px; ">
-        <tbody class="table" >
+        <tbody class="table table-bordered" >
           <th class="table-active">合計金額</th>
           <td>￥<%= @sum.floor.to_s(:delimited)   %></td>
         </tbody>

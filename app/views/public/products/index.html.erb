@@ -1,10 +1,10 @@
 <div class="container　mt-5" style="margin-bottom:500px;">
   <div class="row mt-5">
-    <div class="col-4 mt-5">
+    <div class="col-md-4 mt-5">
       <!--ジャンル一覧を部分テンプレートで表示-->
       <%= render "public/products/genre", gernres: @genres %>
     </div>
-    <div class="col-8 mt-5">
+    <div class="col-md-8 offset-md-0 col-9 offset-2 mt-5">
       <h2  class="d-inline">商品一覧</h2><p class="d-inline">（全<%= @all_products.count  %>件）</p>
       <!--商品一覧-->
       <div id="pub_products">
@@ -12,13 +12,13 @@
         <% @products.each do |product| %>
         <div id="pub_product">
           <!--商品画像-->
-          <div class="card-img-top">
-            <%= attachment_image_tag product,:image ,:fill,150,100,fallback: "no_image.png",size: "150x100" %>
+          <div id="product_img" class=" card-img-top">
+            <%= attachment_image_tag product,:image ,fallback: "no_image.png" ,class:"card-img"%>
           </div>
           <!--商品ネーム-->
           <div class="">
-            <%= link_to public_product_path(product) do %>
-              <%= product.name %>
+            <%= link_to public_product_path(product),class: "text-dark" do %>
+              <%= product.name  %>
             <% end %>
           </div>
           <!--商品金額-->

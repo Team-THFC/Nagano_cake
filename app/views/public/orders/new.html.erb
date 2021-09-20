@@ -13,12 +13,12 @@
         <h5 class="col-xs-3 sub-head text-strong"><strong>お届け先</strong></h5>
         <div class = "form-group col-sm-12">
           <%= f.radio_button :addresses, "residence", checked: true  %> <span>ご自身の住所</span><br>
-          <%= "#{current_member.postal_code}  #{current_member.address}"  %> <br>
-          <%= "#{current_member.first_name} #{current_member.last_name}" %>
+          <%= @member.postal_code %> <%= @member.address %> <br>
+          <%= @member.last_name%><%= @member.first_name %>
         </div>
          <% if @addresses != [] %>
         <div class = "form-group col-sm-4">
-          <%= f.radio_button :addresses, "addresses"  %> <span>登録済み住所から選択</span><br>
+          <%= f.radio_button :addresses, "address"  %> <span>登録済み住所から選択</span><br>
           <%= f.collection_select :address_id, @addresses, :id, :order_address, { prompt: '選択してください' }, class: 'form-control' %>
         </div>
         <% end %>

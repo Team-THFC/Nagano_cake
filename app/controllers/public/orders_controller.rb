@@ -4,7 +4,8 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-  	@addresses = Address.where(member: current_member)
+    @member = current_member
+  	@addresses = Address.where(member_id: current_member.id)
   end
 
   def confirm
@@ -15,7 +16,7 @@ class Public::OrdersController < ApplicationController
       @order.address     = current_member.address
       @order.name        = current_member.last_name +
                            current_member.first_name
-    elsif params[:order][:addresses] == "addresses"
+    elsif params[:order][:addresses] == "address"
       ship = Address.find(params[:order][:address_id])
       @order.postal_code = ship.postal_code
       @order.address     = ship.address
@@ -29,16 +30,16 @@ class Public::OrdersController < ApplicationController
 
       unless @order.valid?
          @addresses = Address.where(member: current_member)
-        render :new
+
       end
     end
   end
 
   def create
     @order = current_member.order.new(order_params)
-    if @order.save
-      redirect_to finish_public_orders_path
-    end
+    @order.save!
+    redirect_to finish_public_orders_path
+
     if params[:order][:ship] == "1"
       current_member.address.create(address_params)
     end
@@ -73,7 +74,7 @@ class Public::OrdersController < ApplicationController
    private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_payment, :postage)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_payment, :shipping_price,)
   end
 
   def address_params

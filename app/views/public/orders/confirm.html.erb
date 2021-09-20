@@ -68,20 +68,23 @@
         <h4 class = "ml-5"><%= "#{@order.name}"  %></h4>
       </div>
     </div>
-    <div class >
-      <% form_with model: @order, url: public_orders_path, local: true do |f| %>
+    <div class = "form-group" >
+      <% form_with model: @order, url: public_orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :postal_code %>
         <%= f.hidden_field :address %>
         <%= f.hidden_field :name %>
-        <%= f.hidden_field :postage %>
+        <%= f.hidden_field :shipping_price %>
         <%= f.hidden_field :payment_method %>
         <%= f.hidden_field :total_payment %>
         <%= f.hidden_field :ship, value: @ship %>
-    </div>
-    <div class =  "actions col-md-6 text-right col-md-offset-4 mb-5">
         <%= link_to '登録一覧へ', new_public_order_path(@order) %>
         <%= f.submit "注文を確定する", class: "btn btn-success center-block col-xs-5" %>
-      <% end %>
+       <% end %>
+    </div>
+    <div class =  "actions col-md-6 text-right col-md-offset-4 mb-5">
+
+<%= link_to '登録一覧へ', new_public_order_path(@order) %>
+
     </div>
     </% end %>
   </div>
