@@ -78,7 +78,7 @@
         <%= f.hidden_field :total_payment %>
         <%= f.hidden_field :ship, value: @ship %>
         <%= link_to '登録一覧へ', new_public_order_path(@order) %>
-        <%= f.submit "注文を確定する", class: "btn btn-success center-block col-xs-5" %>
+        <%= link_to "注文を確定する", orders_finish_path, class: "btn btn-success center-block col-xs-5" %>
        <% end %>
     </div>
     <div class =  "actions col-md-6 text-right col-md-offset-4 mb-5">
