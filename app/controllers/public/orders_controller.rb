@@ -14,23 +14,23 @@ class Public::OrdersController < ApplicationController
     if params[:order][:addresses] == "residence"
       @order.postal_code = current_member.postal_code
       @order.address     = current_member.address
-      @order.name        = current_member.last_name +
-                           current_member.first_name
+      @order.name        = current_member.last_name + current_member.first_name
+
     elsif params[:order][:addresses] == "address"
       ship = Address.find(params[:order][:address_id])
+      @order = Order.new
       @order.postal_code = ship.postal_code
       @order.address     = ship.address
       @order.name        = ship.name
 
     elsif params[:order][:addresses] == "new_address"
+      @order = Order.new
       @order.postal_code = params[:order][:postal_code]
       @order.address     = params[:order][:address]
       @order.name        = params[:order][:name]
       @ship = "1"
-
       unless @order.valid?
          @addresses = Address.where(member: current_member)
-
       end
     end
   end
@@ -54,7 +54,6 @@ class Public::OrdersController < ApplicationController
     )
       @cart_products.destroy_all
     end
-
   end
 
   def finish
@@ -80,8 +79,6 @@ class Public::OrdersController < ApplicationController
   def address_params
     params.require(:order).permit(:postal_code, :address, :name)
   end
-
-
 
 
 end
