@@ -12,9 +12,11 @@
   <body>
     <%= render "layouts/header" %>
     <main>
+      <div class= "text-success"><%= flash[:notice] %></div>
+      <%= yield %>
 
     </main>
-    <%= yield %>
+
     <%= render "layouts/footer" %>
 
   </body>

@@ -5,8 +5,11 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save
-    redirect_to admin_products_path
+    if @product.save
+      redirect_to admin_product_path(@product), notice: 'You have created product successfully.'
+    else
+      render :new
+    end
   end
 
   def index
@@ -24,8 +27,11 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update(product_params)
-    redirect_to admin_product_path(@product.id)
+    if @product.update(product_params)
+      redirect_to admin_product_path(@product),notice: 'You have updated product successfully.'
+    else
+      render :edit
+    end
 
   end
 

@@ -4,6 +4,7 @@
       <div class = "col-sm-6">
         <h5 class="mt-4">ジャンル一覧・追加</h5>
       </div>
+     <%= render 'layouts/errors', obj: @genre %>
 
       <%= form_with model: @genre,url:'/admin/genres', local:true do |f| %>
       <div class="form-grop mt-4">
