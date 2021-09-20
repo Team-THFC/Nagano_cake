@@ -1,29 +1,29 @@
 <div class="container　mt-5 " style="margin-bottom:500px;">
   <div class="row mt-5">
-    <div class="col-4 mt-5">
+    <div class="col-md-4 mt-5">
 
       <!--ジャンル一覧を部分テンプレートで表示-->
       <%= render "public/products/genre", gernres: @genres %>
     </div>
-    <div class="col-8 mt-5">
+    <div class="col-md-8 offset-md-0 col-9 offset-2 mt-5">
       <!--商品詳細画面表示-->
-      <div class="d-flex" style="margin-bottom:200px;">
+      <div  class="d-md-flex" style="margin-bottom:200px;">
         <!--商品画像-->
-        <div class="product_image  mr-5 ">
-          <%= attachment_image_tag @product,:image ,:fill,300,200,fallback: "no_image.png",size: "300x200" %>
+        <div class="mr-md-5">
+          <%= attachment_image_tag @product,:image ,fallback: "no_image.png", class: "product_img"%>
         </div>
         <!--商品概要-->
-        <div class="product_text ">
+        <div class="mt-5 mt-md-0" id="product_text">
           <!--商品名-->
           <h3 class=""><%= @product.name %></h3>
           <!--商品説明-->
           <p class="mt-2"><%= @product.explanation %></p>
+          <!---->
           <!--商品金額-->
           <h4 class="d-inline-block" style="margin-top:40px;">
             <% @product_price = @product.tax_out_price * 1.1 %>
             ￥<%= @product_price.floor.to_s(:delimited)  %>
           </h4><p class="d-inline-block">（税込）</p>
-
           <!--カートに入れるためのフォーム-->
           <!--ログインした人のみカートに入れるボタンが表示-->
           <% if member_signed_in? %>

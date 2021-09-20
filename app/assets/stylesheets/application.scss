@@ -16,6 +16,7 @@
 @import "bootstrap";
 
 
+
 .pagination {
   justify-content: center;
 }
@@ -23,6 +24,8 @@
 .pagination {
   justify-content: center;
 }
+
+
 #pub_products{
   display:flex;
   flex-wrap:wrap;
@@ -30,6 +33,14 @@
 #pub_product{
   margin-right:20px;
   margin-top:50px;
+}
+.card-img{
+  width:150px;
+  height:100px;
+}
+.product_img{
+  width:300px;
+  height:200px;
 }
 
 #top-card{
@@ -66,7 +77,7 @@
 
 // マイページのタイトル全てのフォント
 #member-title{
-  font-family: 'Corben', cursive;
+ font-family: 'Noto Sans JP', sans-serif;
 }
 // マイページの表のアレンジ↓
 #member-table{
@@ -113,3 +124,23 @@
 }
 // ↑ここまで表のアレンジ
 
+@media screen and (max-width:768px) {
+  #pub_products{
+  display:block;
+  }
+
+  #pub_product{
+  margin-right:0px;
+  margin-top:50px;
+  }
+  .card-img{
+    width:400px;
+    height:250px;
+  }
+  .product_img{
+  width:400px;
+  height:250px;
+  }
+
+
+}
