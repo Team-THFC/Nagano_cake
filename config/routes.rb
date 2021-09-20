@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
     resources :orders,only:[:new, :create, :index, :show] do
       collection do
-        post 'comfirm'
+        post 'confirm'
         get 'finish'
       end
     end

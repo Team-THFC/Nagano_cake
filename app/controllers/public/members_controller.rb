@@ -10,12 +10,8 @@ class Public::MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-   if  @member.update(member_params)
-    redirect_to public_member_path
-   else
-    render 'edit'
-   end
-
+    @member.update(member_params)
+    redirect_to public_member_path(@member)
   end
 
   def withdraw

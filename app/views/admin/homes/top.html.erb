@@ -13,11 +13,10 @@
       <tbody>
         <tr>
           <% @orders.each do |order| %>
-            <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
-            <td><%= order.member.last_name %><%= order.member.first_name %></td>
+            <td><%= order.created_at %></td>
+            <td><%= order.member.last_name.first_name %></td>
             <td><%= order.order_products.quantitiy %></td>
             <td><%= order.status %></td>
-            
           <% end %>
         </tr>
       </tbody>
