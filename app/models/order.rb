@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
-  has_many :order_products, dependent: :destroy
-  belongs_to :member
 
+  belongs_to :member, optional: true
+  has_many :order_products, dependent: :destroy
 
   validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
   validates :shipping_price, :total_payment, numericality: { only_integer: true }
