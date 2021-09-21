@@ -28,10 +28,10 @@
                   <%= cart.quantity %>
                 </td>
                 <td>
-                  <% @total = @product_price * cart.quantity %>
-                  <%= @total.floor.to_s(:delimited) %>
+                  <% total = @product_price * cart.quantity %>
+                  <%= total.floor.to_s(:delimited) %>
                 </td>
-                  <% @order.price += @total  %>
+                  <% @order.price += total  %>
               </tr>
             <% end %>
           </tbody>

@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
     <h4>商品新規登録</h4>
+      <%= render 'layouts/errors', obj: @product %>
       <%= form_with model: @product,url:'/admin/products', local:true do |f| %>
 
         <div class="form-grop mt-3">
