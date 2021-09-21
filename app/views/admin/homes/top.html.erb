@@ -11,18 +11,20 @@
         </tr>
       </thead>
       <tbody>
+        <% @orders.each do |order| %>
         <tr>
-          <% @orders.each do |order| %>
-            <td>
-              <u><%= link_to order.created_at, admin_order_path(order.id),class: "text-dark" %></u>
-            </td>
-            <td><%= order.member.last_name %><%= order.member.first_name %></td>
-            <td><%= order.order_products.quantitiy %></td>
-            <td><%= order.status %></td>
-          <% end %>
+          <td>
+            <u><%= link_to order.created_at, admin_order_path(order),class: "text-dark" %></u>
+          </td>
+          <td><%= order.member.last_name %><%= order.member.first_name %></td>
+          <td><%= order.order_products.count %></td>
+          <td><%= order.status %></td>
         </tr>
+        <% end %>
       </tbody>
     </table>
     <%= paginate @orders %>
   </div>
 </div>
+
+
