@@ -8,5 +8,6 @@ class Member < ApplicationRecord
   has_many :orders
   has_many :cart_products, dependent: :destroy
 
-  validates :postal_code, length: {is: 7}
+  validates :last_name, :first_name, :last_name_kana, :first_name_kana, :address, :phone_number, presence: true
+  validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
 end

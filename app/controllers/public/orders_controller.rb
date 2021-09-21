@@ -48,9 +48,7 @@ class Public::OrdersController < ApplicationController
 
     @order.save!
     redirect_to finish_public_orders_path
-    if params[:order][:ship] == "1"
-      current_member.address.create(address_params)
-    end
+    
 
      @member_cart_products = CartProduct.where(member_id: current_member.id)
 
@@ -90,8 +88,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def address_params
-    params.require(:order).permit(:postal_code, :address, :name)
+    params.require(:order).permit(:address, :name,:postal_code, :shipping_price, :payment_method, :total_payment, :ship)
   end
+
 
 
 

@@ -1,7 +1,7 @@
 <div class = "container">
   <h2 class= "head-line title_h2 text-dark p-1 m-5 rounded-lg border border-dark">注文履歴一覧</h2>
   <div class = "row">
-      <% if @orders.exists? %>
+      <% if @orders.present?  %>
       <table class = "table table-hover table-bordered table-condensed">
         <thead class = "text-left bg-light">
           <tr>
