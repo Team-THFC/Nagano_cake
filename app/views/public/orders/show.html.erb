@@ -56,11 +56,11 @@
           </tr>
         </thead>
         <tbody>
-          <% @order_details.each do |order_detail| %>
+          <% @order_products.each do |order_product| %>
           <tr>
+            <td><%= order_product.product.name %></td>
             <td></td>
-            <td></td>
-            <td></td>
+            <td><%= order_product.quantity %></td>
             <td></td>
           </tr>
           <% end %>
