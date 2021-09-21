@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
   def show
     @orders = Order.all
     @order = Order.find(params[:id])
-    @orders_products = @order.order_products
+    @order_products = OrderProduct.all
   end
 
   def update
