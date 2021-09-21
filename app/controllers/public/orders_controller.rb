@@ -9,8 +9,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.new(order_params)
+    @order = Order.new
     @member_cart_products = CartProduct.where(member: current_member)
+
     if params[:order][:addresses] == "residence"
       @order.postal_code = current_member.postal_code
       @order.address     = current_member.address
@@ -36,24 +37,20 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = current_member.order.new(order_params)
-    @order.save!
-    redirect_to finish_public_orders_path
+    @order = Order.new(order_params)
+    @order.save
+    @member_cart_products = CartProduct.where(member: current_member)
 
-    if params[:order][:ship] == "1"
-      current_member.address.create(address_params)
-    end
-
-     @cart_products = current_cart
-     @cart_products.each do |cart_product|
-     OrderDetail.create(
-      product:  cart_product.product,
+     @member_cart_products.each do |cart|
+     OrderProduct.create(
+      product:  cart.product,
       order:    @order,
-      quantity: cart_product.quantity,
-      price: price(cart_product)
+      quantity: cart.quantity,
+      price: @order.total_payment
     )
-      @cart_products.destroy_all
     end
+  redirect_to finish_public_orders_path
+
   end
 
   def finish
@@ -61,8 +58,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_member.orders
-    @orders = Order.all
+
+    @orders = Order.where(member_id: current_member.id)
   end
 
   def show
@@ -73,7 +70,7 @@ class Public::OrdersController < ApplicationController
    private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_payment, :shipping_price,)
+    params.require(:order).permit(:member_id,:postal_code, :address, :name, :payment_method, :total_payment, :shipping_price)
   end
 
   def address_params

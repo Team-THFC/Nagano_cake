@@ -1,10 +1,19 @@
 class Admin::OrdersController < ApplicationController
+  
+  def index
+    @orders = Order.all
+  end
 
   def show
     @orders = Order.all
     @order = Order.find(params[:id])
-    @orders_params = OrderProduct.all
-   
+    @order_products = OrderProduct.where(order_id: @order)
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    @order.update(orders_params)
+    redirect_to admin_order_path(@order)
   end
 
   private

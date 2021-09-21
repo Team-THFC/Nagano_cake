@@ -2,7 +2,7 @@
   <h2 class= "head-line title_h2 text-dark p-1 m-5 rounded-lg border border-dark">注文情報</h2>
   <div class = "row">
     <div class = "col-sm-9">
-      </% if @member_cart_products.exists? %>
+      <% if @member_cart_products.exists? %>
         <table class = "table table-hover mt-5">
           <thead class="bg-light ">
             <tr>
@@ -46,14 +46,14 @@
         <tr>
           <th>商品合計</th>
           <td>
-            <%= @total %>
+            <%= @total.floor.to_s(:delimited) %>
           </td>
         </tr>
         <tr>
           <th>請求金額</th>
           <td>
-            </% @billing = @order.shipping_price + @total %>
-            </%= @billing %>
+            <% @billing = @order.shipping_price + @total %>
+            <%= @billing.floor.to_s(:delimited) %>
           </td>
         </tr>
       </table>
@@ -64,28 +64,30 @@
       </div>
       <div class = "form-group">
         <h2>お届け先</h2>
-        <h4 class = "mt-3 ml-5"><%= "〒#{@order.postal_code}    #{@order.address}" %></h4><br>
+        <h4 class = "mt-3 ml-5"><%= "〒#{@order.postal_code} #{@order.address}" %></h4><br>
         <h4 class = "ml-5"><%= "#{@order.name}"  %></h4>
       </div>
     </div>
     <div class = "form-group" >
-      <% form_with model: @order, url: public_orders_path, method: :post, local: true do |f| %>
+      <%= form_with( model: @order, local: true, url: {action: :create}) do |f| %>
+        <%= f.hidden_field :member_id, :value => current_member.id %>
         <%= f.hidden_field :postal_code %>
         <%= f.hidden_field :address %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :shipping_price %>
         <%= f.hidden_field :payment_method %>
-        <%= f.hidden_field :total_payment %>
+        <%= f.hidden_field :total_payment, value: @billing.to_i %>
         <%= f.hidden_field :ship, value: @ship %>
-        <%= link_to '登録一覧へ', new_public_order_path(@order) %>
-        <%= f.submit "注文を確定する", class: "btn btn-success center-block col-xs-5" %>
-       <% end %>
+  <div class="actions">
+    <%= f.submit '完了する' %>
+  </div>
+      <% end %>
     </div>
     <div class =  "actions col-md-6 text-right col-md-offset-4 mb-5">
 
 <%= link_to '登録一覧へ', new_public_order_path(@order) %>
 
     </div>
-    </% end %>
+    <% end %>
   </div>
 </div>
