@@ -6,9 +6,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_account_update_parameters, if: :devise_controller?
 
 
+
   def after_sign_in_path_for(resource)
       if member_signed_in?
-        public_member_path(current_member)
+        public_root_path
       else
         admin_root_path
       end
