@@ -11,31 +11,14 @@
         </tr>
       </thead>
       <tbody>
-         <% @orders.each do |order| %>
+        <% @orders.each do |order| %>
         <tr>
-<<<<<<< HEAD
-            <td>
-              <%= link_to admin_order_path(order) do %>
-                <%= order.created_at %>
-              <% end %>
-            </td>
-            <td><%= order.member.last_name %></td>
-            <td>
-              <% @sum = 0  %>
-              <% order.order_products.each do |order_product| %>
-              <% @sum += order_product.quantity %>
-              <% end %>
-              <%= @sum %>
-            </td>
-=======
-          <% @orders.each do |order| %>
-            <td>
-              <u><%= link_to order.created_at, admin_order_path(order.id),class: "text-dark" %></u>
-            </td>
-            <td><%= order.member.last_name %><%= order.member.first_name %></td>
-            <td><%= order.order_products.quantitiy %></td>
->>>>>>> 32d23ff5dae014545a443ba5cb87862af1d81ea0
-            <td><%= order.status %></td>
+          <td>
+            <u><%= link_to order.created_at, admin_order_path(order),class: "text-dark" %></u>
+          </td>
+          <td><%= order.member.last_name %><%= order.member.first_name %></td>
+          <td><%= order.order_products.count %></td>
+          <td><%= order.status %></td>
         </tr>
         <% end %>
       </tbody>
@@ -43,3 +26,5 @@
     <%= paginate @orders %>
   </div>
 </div>
+
+

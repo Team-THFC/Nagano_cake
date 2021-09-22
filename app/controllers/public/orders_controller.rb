@@ -44,23 +44,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-<<<<<<< HEAD
-    @order = Order.new(order_params)
-    @order.save
-    @member_cart_products = CartProduct.where(member: current_member)
-
-=======
      @order = current_member.orders.new(order_params)
 
     @order.save!
     redirect_to finish_public_orders_path
-    if params[:order][:ship] == "1"
-      current_member.address.create(address_params)
-    end
-
      @member_cart_products = CartProduct.where(member_id: current_member.id)
-
->>>>>>> 32d23ff5dae014545a443ba5cb87862af1d81ea0
      @member_cart_products.each do |cart|
      OrderProduct.create(
       product:  cart.product,
@@ -69,14 +57,9 @@ class Public::OrdersController < ApplicationController
       price: @order.total_payment
     )
     end
-<<<<<<< HEAD
-  redirect_to finish_public_orders_path
-=======
-
-
 
     @member_cart_products.destroy_all
->>>>>>> 32d23ff5dae014545a443ba5cb87862af1d81ea0
+
 
   end
 
@@ -101,8 +84,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def address_params
-    params.require(:order).permit(:postal_code, :address, :name)
+    params.require(:order).permit(:address, :name,:postal_code, :shipping_price, :payment_method, :total_payment, :ship)
   end
 
 
 end
+
