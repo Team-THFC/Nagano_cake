@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
       if member_signed_in?
         public_root_path(resource)
       else
-        admin_orders_path
+        admin_root_path
       end
   end
 
