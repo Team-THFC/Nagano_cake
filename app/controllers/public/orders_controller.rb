@@ -5,12 +5,19 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @member = current_member
+    @member_cart_products = CartProduct.where(member_id: current_member.id)
   	@addresses = Address.where(member_id: current_member.id)
+
   end
 
   def confirm
-    @order = Order.new
-    @member_cart_products = CartProduct.where(member: current_member)
+    @order = Order.new(
+      member: current_member,
+      payment_method: params[:order][:payment_method]
+    )
+
+    @member_cart_products = CartProduct.where(member_id: current_member.id)
+    #@order.total_payment = billing(@order)
 
     if params[:order][:addresses] == "residence"
       @order.postal_code = current_member.postal_code
@@ -37,10 +44,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
     @order = Order.new(order_params)
     @order.save
     @member_cart_products = CartProduct.where(member: current_member)
 
+=======
+     @order = current_member.orders.new(order_params)
+
+    @order.save!
+    redirect_to finish_public_orders_path
+    if params[:order][:ship] == "1"
+      current_member.address.create(address_params)
+    end
+
+     @member_cart_products = CartProduct.where(member_id: current_member.id)
+
+>>>>>>> 32d23ff5dae014545a443ba5cb87862af1d81ea0
      @member_cart_products.each do |cart|
      OrderProduct.create(
       product:  cart.product,
@@ -49,7 +69,14 @@ class Public::OrdersController < ApplicationController
       price: @order.total_payment
     )
     end
+<<<<<<< HEAD
   redirect_to finish_public_orders_path
+=======
+
+
+
+    @member_cart_products.destroy_all
+>>>>>>> 32d23ff5dae014545a443ba5cb87862af1d81ea0
 
   end
 
@@ -58,7 +85,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-
+    @order = Order.all
     @orders = Order.where(member_id: current_member.id)
   end
 
