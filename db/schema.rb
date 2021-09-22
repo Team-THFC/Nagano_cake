@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2021_09_21_015012) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "member_id"
-    t.integer "shipping_price", default: 800
+    t.integer "shipping_price", default: 80.name0
     t.integer "total_payment"
     t.integer "payment_method", default: 0
     t.string "name"
