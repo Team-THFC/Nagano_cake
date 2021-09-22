@@ -50,9 +50,15 @@
           <% @order_products.each do |order_product| %>
             <tr>
               <td><%= order_product.product.name %></td>
-              <td></td>
+              <td>
+                <% @product_price = order_product.product.tax_out_price * 1.1 %>
+                <%= @product_price.floor.to_s(:delimited) %>
+              </td>
               <td><%= order_product.quantity %></td>
-              <td><%= order_product.price.to_s(:delimited) %></td>
+              <td>
+                <% @all_price = @product_price * order_product.quantity %>
+                <%= @all_price.floor.to_s(:delimited) %>
+              </td>
               <td>
                 <%= select :production_status,:name,OrderProduct.production_statuses.keys.to_a %>
                 <% submit_tag "更新", class: "btn btn-success" %>
@@ -68,7 +74,10 @@
       <table class="table">
         <tr>
           <th class="info">商品合計</th>
-          <td></td>
+          <td>
+
+
+          </td>
         </tr>
         <tr>
           <th class="info">送料</th>
@@ -76,7 +85,7 @@
         </tr>
         <tr>
           <th class="info">請求金額</th>
-          <td><%= @order.total_payment + @order.shipping_price %>円</td>
+          <td>円</td>
         </tr>
       </table>
     </div>
