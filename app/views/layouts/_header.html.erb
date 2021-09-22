@@ -4,7 +4,7 @@
       <nav class = "nav navbar-nav navbar-left title">
       <% if admin_signed_in? %>
       <%# 管理者がログインした時　%>
-        <%= link_to "Nagano CAKE", admin_orders_path, class: "btn btn-outline-dark btn-lg" %>
+        <%= link_to "Nagano CAKE", admin_root_path, class: "btn btn-outline-dark btn-lg" %>
       <% else %>
     　 <%# 顧客顧客がログインした時　%>
     　   <%= link_to "Nagano CAKE",  public_root_path, class: "btn btn-outline-dark btn-lg" %>
@@ -39,7 +39,7 @@
             <%= link_to "会員一覧", admin_members_path, class: "btn btn-outline-dark mr-5"  %>
           </li>
           <li>
-            <%= link_to "注文履歴一覧", admin_orders_path, class: "btn btn-outline-dark mr-5" %>
+            <%= link_to "注文履歴一覧", admin_root_path, class: "btn btn-outline-dark mr-5" %>
           </li>
           <li>
             <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-dark mr-5" %>
