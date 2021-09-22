@@ -8,13 +8,13 @@
       <%= render "public/shared/error_messages", resource: resource %>
       <div class="form-group mt-5">
         <%= f.label :名前 ,class:"col-4 mr-2"%>
-        <%= f.text_field :first_name , autofocus: true,class: "form-control-static col-3",placeholder:"姓"%>
-        <%= f.text_field :last_name ,class: "form-control-static col-3  ",placeholder:"名" %>
+        <%= f.text_field :last_name, autofocus: true,class: "form-control-static col-3",placeholder:"姓"%>
+        <%= f.text_field :first_name ,class: "form-control-static col-3  ",placeholder:"名" %>
       </div>
       <div class="form-group mt-3">
         <%= f.label :フリガナ,class:"col-4 mr-2" %>
-        <%= f.text_field :first_name_kana ,class: "form-control-static col-3",placeholder:"セイ"%>
-        <%= f.text_field :last_name_kana ,class: "form-control-static  col-3",placeholder:"メイ"%>
+        <%= f.text_field :last_name_kana ,class: "form-control-static col-3",placeholder:"セイ"%>
+        <%= f.text_field :first_name_kana  ,class: "form-control-static  col-3",placeholder:"メイ"%>
       </div>
       <div class="form-group mt-3">
         <%= f.label :メールアドレス（編集不可）,class:"col-4 mr-2" %>
