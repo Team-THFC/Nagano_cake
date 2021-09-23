@@ -73,7 +73,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @order = Order.all
-    @orders = Order.where(member_id: current_member.id)
+    @orders = Order.where(member_id: current_member.id)c
     @orders = Order.order(created_at: :asc).page(params[:page]).reverse_order
   end
 
