@@ -27,17 +27,15 @@
           <!--カートに入れるためのフォーム-->
           <!--ログインした人のみカートに入れるボタンが表示-->
           <% if member_signed_in? %>
-          <div class="form-group">
-            <%=  form_with url: public_cart_products_path,method: :post, local: true do |f| %>
+          <%=  form_with url: public_cart_products_path,method: :post, local: true do |f| %>
+          <div>
             <!--個数選択-->
             <%= f.select :quantity,[["1","1"],["2","2"],["3","3"],["4","4"],["5","5"],["6","6"], ["7","7"],["8","8"],["9","9"],["10","10"]],include_blank: "個数選択",class: 'form-select'%>
             <%= f.hidden_field :product_id, :value => @product.id %>
              <%= f.hidden_field :member_id, :value => current_member.id %>
-          </div>
           <!--カートに入れるボタン-->
-          <button class="btn btn-info mt-5 d-block" >カートに入れる
-            <% f.submit  %>
-          </button>
+          　<button class="btn btn-info mt-5 d-block" >カートに入れる<% f.submit  %></button>
+          </div>
           <% end %>
           <!--未ログインの方はログイン遷移ボタン表示-->
           <% else %>
