@@ -7,7 +7,6 @@ class Public::OrdersController < ApplicationController
     @member = current_member
     @member_cart_products = CartProduct.where(member_id: current_member.id)
   	@addresses = Address.where(member_id: current_member.id)
-
   end
 
   def confirm
@@ -15,7 +14,6 @@ class Public::OrdersController < ApplicationController
       member: current_member,
       payment_method: params[:order][:payment_method]
     )
-
     @member_cart_products = CartProduct.where(member_id: current_member.id)
     #@order.total_payment = billing(@order)
 
@@ -24,6 +22,7 @@ class Public::OrdersController < ApplicationController
       @order.address     = current_member.address
       @order.name        = current_member.last_name +
                            current_member.first_name
+
     elsif params[:order][:addresses] == "address"
       ship = Address.find(params[:order][:address_id])
       @order.postal_code = ship.postal_code
@@ -38,7 +37,6 @@ class Public::OrdersController < ApplicationController
 
       unless @order.valid?
          @addresses = Address.where(member: current_member)
-
       end
     end
   end
@@ -48,7 +46,7 @@ class Public::OrdersController < ApplicationController
 
     @order.save!
     redirect_to finish_public_orders_path
-    
+
 
      @member_cart_products = CartProduct.where(member_id: current_member.id)
 
@@ -61,8 +59,6 @@ class Public::OrdersController < ApplicationController
     )
     end
 
-
-
     @member_cart_products.destroy_all
 
   end
@@ -74,8 +70,8 @@ class Public::OrdersController < ApplicationController
   def index
     @order = Order.all
     @orders = Order.where(member_id: current_member.id)
+    @orders = Order.order(created_at: :asc).page(params[:page]).reverse_order
   end
-
   def show
     @order = Order.find(params[:id])
     @order_products = @order.order_products
@@ -90,9 +86,5 @@ class Public::OrdersController < ApplicationController
   def address_params
     params.require(:order).permit(:address, :name,:postal_code, :shipping_price, :payment_method, :total_payment, :ship)
   end
-
-
-
-
 
 end

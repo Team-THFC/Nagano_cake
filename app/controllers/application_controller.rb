@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
       if member_signed_in?
-        public_root_path
+        public_root_url
       else
-        admin_root_path
+        admin_root_url
       end
   end
 

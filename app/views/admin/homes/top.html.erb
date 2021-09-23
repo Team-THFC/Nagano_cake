@@ -17,7 +17,7 @@
             <u><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order),class: "text-dark" %></u>
           </td>
           <td><%= order.member.last_name %><%= order.member.first_name %></td>
-          <td><%= order.order_products.count %></td>
+          <td><%= order.order_products.sum(:quantity) %></td>
           <td><%= order.status %></td>
         </tr>
         <% end %>
