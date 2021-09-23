@@ -1,74 +1,73 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-light text-dark">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class = "container">
-      <nav class = "nav navbar-nav navbar-left title">
-      <% if admin_signed_in? %>
-      <%# 管理者がログインした時　%>
-        <%= link_to "Nagano CAKE", admin_root_path, class: "btn btn-outline-dark btn-lg" %>
-      <% else %>
-    　 <%# 顧客顧客がログインした時　%>
-    　 <%= link_to "Nagano CAKE",  public_root_path, class: "btn btn-outline-dark btn-lg" %>
-      <% end %>
-      </nav>
-      <nav>
-        <ul class = "nav navbar-nav navbar-right">
+      <div class="navbar-brand p-3">
+        <% if admin_signed_in? %>
+        <%# 管理者がログインした時　%>
+          <%= link_to "Nagano CAKE", admin_root_path, class: "btn btn-outline-light btn-lg" %>
+        <% else %>
+        <%# 顧客顧客がログインした時　%>
+          <%= link_to "Nagano CAKE",  public_root_path, class: "btn btn-outline-light btn-lg" %>
+        <% end %>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbardrop" aria-controls="navbardrop" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbardrop">
+        <ul class = "nav navbar-nav  ">
           <% if member_signed_in? %>
           <!--カスタマーがログインしている時 -->
-          <li class="header-name">
-            ようこそ、<%= (current_member.first_name) %>さん！
-          </li>
-
           <li>
-            <%= link_to "マイページ", public_member_path(current_member), class: "btn btn-outline-dark mr-5" %>
+            <%= link_to "マイページ", public_member_path(current_member) ,class: "nav-text mx-3" %>
           </li>
           <li>
-            <%= link_to "商品一覧", public_products_path, class: "btn  btn-outline-dark mr-5" %>
+            <%= link_to "商品一覧", public_products_path ,class: "nav-text mx-3" %>
           </li>
           <li>
-            <%= link_to "カート", public_cart_products_path, class: "btn  btn-outline-dark mr-5" %>
+            <%= link_to "カート", public_cart_products_path ,class: "nav-text mx-3" %>
           </li>
           <li>
-            <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn  btn-outline-dark mr-5" %>
+            <%= link_to "ログアウト", destroy_member_session_path, method: :delete,class: "nav-text mx-3 mr-5"  %>
           </li>
           <% elsif admin_signed_in? %>
           <!-- 管理者がログインしている時 -->
           <li>
-            <%= link_to "商品一覧", admin_products_path, class: "btn btn-outline-dark mr-5" %>
+            <%= link_to "商品一覧", admin_products_path %>
           </li>
           <li>
-            <%= link_to "会員一覧", admin_members_path, class: "btn btn-outline-dark mr-5"  %>
+            <%= link_to "会員一覧", admin_members_path  %>
           </li>
           <li>
-            <%= link_to "注文履歴一覧", admin_root_path, class: "btn btn-outline-dark mr-5" %>
+            <%= link_to "注文履歴一覧", admin_root_path%>
           </li>
           <li>
-            <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-dark mr-5" %>
+            <%= link_to "ジャンル一覧", admin_genres_path %>
           </li>
           <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark mr-5" %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
           </li>
           <% else %>
           <!-- ログインしていない時 -->
           <li>
-            <%= link_to "About",  public_homes_about_path, class: "btn btn-outline-dark mr-5" %>
+            <%= link_to "About",  public_homes_about_path %>
           </li>
           <li>
-            <%= link_to "商品一覧",  public_products_path, class: "btn btn-outline-dark mr-5" %>
+            <%= link_to "商品一覧",  public_products_path %>
           </li>
           <li>
-            <%= link_to "新規登録", new_member_registration_path, class: "btn btn-outline-dark mr-5" %>
+            <%= link_to "新規登録", new_member_registration_path%>
           </li>
           <li>
-            <%= link_to "ログイン", new_member_session_path, class: "btn btn-outline-dark mr-5" %>
+            <%= link_to "ログイン", new_member_session_path %>
           </li>
           <% end %>
         </ul>
         <div class="d-flex justify-content-end mt-3">
-          <%= form_with url: public_search_path, method: :get,  local: true do |f|%>
-          <%= f.text_field :keyword, value: @keyword ,placeholder: "Search",class: "form-control pull-right",style: "width:300px;"%>
-          <% end %>
+        <%= form_with url: public_search_path, method: :get,  local: true do |f|%>
+        <%= f.text_field :keyword, value: @keyword ,placeholder: "Search",class: "form-control form-inline",style: "width:300px;"%>
+        <% end %>
         </div>
-      </nav>
+      </div>
     </div>
   </nav>
 </header>

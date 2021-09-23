@@ -25,6 +25,22 @@
   justify-content: center;
 }
 
+header{
+  background-color:#deb887;
+}
+
+.header-name{
+  color:#ffffff;
+}
+.nav-text{
+  color:#ffffff;
+}
+.thead{
+  background-color:#f5deb3;
+}
+.thead-text{
+  color:#ffffff;
+}
 
 #pub_products{
   display:flex;
@@ -123,6 +139,11 @@
   padding: 10px 0;
 }
 // ↑ここまで表のアレンジ
+
+footer{
+  background-color:#deb887;
+}
+
 
 @media screen and (max-width:768px) {
   #pub_products{
