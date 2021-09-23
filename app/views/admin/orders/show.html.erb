@@ -44,7 +44,7 @@
         <div class = "field">
           <p>
             <%= f.select :status, Order.statuses.keys.to_a %>
-            <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+            <%= f.submit "更新", class: "btn btn-outline-success btn-sm" %>
           </p>
         </div><br>
       <% end %>
@@ -54,7 +54,7 @@
   <div class="row">
     <div class="col-md-7">
       <table class="table table-hover table-bordered table-inverse">
-        <thead>
+        <thead class="thead-color">
           <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
@@ -81,7 +81,7 @@
               <td>
                 <%= form_with model:[@order,order_product], url: admin_order_order_product_path(@order.id,order_product.id), method: :patch, local: true do |f| %>
                   <%= f.select :production_status, OrderProduct.production_statuses.keys.to_a %>
-                  <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+                  <%= f.submit "更新", class: "btn btn-outline-success btn-sm" %>
                 <% end %>
               </td>
              </tr>
