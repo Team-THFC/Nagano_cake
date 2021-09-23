@@ -1,7 +1,6 @@
 <div class="container mt-5 " style="margin-bottom:250px;">
   <h4>注文履歴詳細</h4>
   <div class="row">
-        <table>
           <div class="col-sm-2">
             <div class = "field">
               <p>購入者</p>
@@ -19,7 +18,6 @@
               <p>注文ステータス</p>
             </div><br>
           </div>
-
           <div class = "col-sm-6">
             <div class = "field">
               <p>
@@ -47,9 +45,7 @@
               </div><br>
             <% end %>
           </div>
-        </table>
-  </div>
-
+    </div>
   <div class="row">
     <div class="col-md-7">
       <table class="table table-hover table-bordered table-inverse">
@@ -77,13 +73,12 @@
                 <%= @all_price.floor.to_s(:delimited) %>
               </td>
                 <% @order.price += @all_price %>
-
-              <%= form_with model:[@order,order_product], url: admin_order_order_product_path(@order.id,order_product.id), method: :patch, local: true do |f| %>
                 <td>
-                  <%= f.select :production_status, OrderProduct.production_statuses.keys.to_a %>
-                  <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+                  <%= form_with model:[@order,order_product], url: admin_order_order_product_path(@order.id,order_product.id), method: :patch, local: true do |f| %>
+                    <%= f.select :production_status, OrderProduct.production_statuses.keys.to_a %>
+                    <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+                  <% end %>
                 </td>
-              <% end %>
             </tr>
           <% end %>
         </tbody>
