@@ -7,7 +7,7 @@
         <%= link_to "Nagano CAKE", admin_root_path, class: "btn btn-outline-dark btn-lg" %>
       <% else %>
     　 <%# 顧客顧客がログインした時　%>
-    　   <%= link_to "Nagano CAKE",  public_root_path, class: "btn btn-outline-dark btn-lg" %>
+    　 <%= link_to "Nagano CAKE",  public_root_path, class: "btn btn-outline-dark btn-lg" %>
       <% end %>
       </nav>
       <nav>
@@ -19,7 +19,7 @@
           </li>
 
           <li>
-            <%= link_to "マイページ", public_member_path(current_member), class: "btn  btn-outline-dark mr-5" %>
+            <%= link_to "マイページ", public_member_path(current_member), class: "btn btn-outline-dark mr-5" %>
           </li>
           <li>
             <%= link_to "商品一覧", public_products_path, class: "btn  btn-outline-dark mr-5" %>
