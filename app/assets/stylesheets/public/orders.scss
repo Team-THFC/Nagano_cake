@@ -1,3 +1,35 @@
 // Place all the styles related to the public/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// トップ・アバウトで使用している枠と文字
+  .flame-image {
+    position: relative;
+    width: 800px;
+    margin: 50px auto 0;
+    margin-bottom: 60px;
+  }
+  .flame-image img{
+    width: 100%;
+  }
+
+  .flame-image h4{
+    color: darkgray;
+    position: absolute;
+    text-align: center;
+    top: 45%;
+    right: 10%;
+    left: 10%;
+  }
+
+  .text-strong {
+    color:#800000;
+  }
+
+  .thead-a {
+     background-color:#f0e68c;
+  }
+
+  .text-white {
+    color: white;
+  }

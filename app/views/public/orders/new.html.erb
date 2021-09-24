@@ -1,7 +1,7 @@
 <div class = "container">
-  <h2 class= "head-line title_h2 text-dark p-1 m-5 rounded-lg border border-dark">会員情報入力</h2>
-  <div class = "row">
-    <div class = "col-sm-9">
+  <div class = "row mt-4">
+    <div class = "col-10 offset-1">
+      <h4 class= "text-main">会員情報入力</h4>
       <%= form_with model: @order,url:confirm_public_orders_path, local: true  do |f| %>
         <h5 class="col-xs-3 sub-head text-strong"><strong>支払い方法</strong></h5>
         <div class = "form-group col-sm-4">
@@ -32,7 +32,7 @@
            <%= f.text_field :name, placeholder:"令和道子", class: "col-sm-4 form-control-static name" %>
         </div>
         <div class = "actions col-md-6 text-right col-md-offset-4 mb-5">
-          <%= f.submit "確認画面に進む" ,class: "col-xs-2 pull-right btn btn-primary" %>
+          <%= f.submit "確認画面に進む" ,class: "col-xs-2 btn btn-b" %>
         </div>
       <% end %>
     </div>

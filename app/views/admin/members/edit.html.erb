@@ -1,11 +1,9 @@
-<div class = "container">
-  <h2 class= "head-line title_h2 text-dark p-1 m-5 rounded-lg border border-dark">
-    <%= @member.last_name %><%= @member.first_name %>さんの会員情報編集
-  </h2>
+<div class = "container" style="margin-bottom: 150px;">
+  <h5  class="title-q"><%= @member.last_name %><%= @member.first_name %>さんの会員情報編集</h5>
    <%= form_with model: @member, url:admin_member_path, local: true do |f| %>
     <div class = "row">
       <div class = "col-sm-9">
-        <div class = "form-group">
+        <div class = "form-group mt-3">
           <%= f.label :"会員ID", class: "col-sm-3 control-label" %>
           <%= f.label :"#{@member.id}", class: "col-sm-4 control-label" %>
         </div>
@@ -45,7 +43,7 @@
       </div>
     </div>
     <div class="actions col-md-4 text-right col-md-offset-4 mb-5">
-        <%= f.submit '変更を保存' ,class: "btn btn-success" %>
+        <%= f.submit '変更を保存' ,class: "btn btn-o" %>
       </div>
    <% end %>
 </div>
