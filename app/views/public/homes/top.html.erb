@@ -27,7 +27,7 @@
             </div>
             <!--商品ネーム-->
             <div>
-              <%= link_to public_product_path(product),class:"text-dark" do%>
+              <%= link_to public_product_path(product),class:"text-d" do%>
                 <%= product.name %>
               <% end %>
             </div>
@@ -40,8 +40,8 @@
         <% end %>
         </div>
       </div>
-         <button class=" btn btn-outline-info mt-5">
-          <%= link_to "全ての商品を見る", public_products_path ,class: "text-dark"%>
+         <button class=" btn mt-5">
+          <%= link_to "全ての商品を見る", public_products_path ,class: "text"%>
         </button>
     </div>
   </div>

@@ -6,8 +6,8 @@
       <% if @member_cart_products.exists? %>
       <!--カート内商品全て削除ボタン-->
       <div class="text-right">
-        <button class="btn btn-danger ">
-          <%= link_to "カートを空にする",public_cart_product_destroy_path, method: :delete, class: "text-white" %>
+        <button class="btn btn-outline-danger">
+          <%= link_to "カートを空にする",public_cart_product_destroy_path, method: :delete, class: "text-dark" %>
         </button>
       </div>
       <!--カート内商品一覧-->
@@ -60,7 +60,7 @@
               <% @sum += @total  %>
             <td>
               <!--カート個々での削除ボタン-->
-              <button class="btn btn-danger btn-sm">
+              <button class="btn-delete btn-sm">
                 <%= link_to "削除する", public_cart_product_path(cart),method: :delete , class: "text-white"%>
               </button>
             </td>

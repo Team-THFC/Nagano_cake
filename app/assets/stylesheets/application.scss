@@ -42,6 +42,20 @@ header{
   color:#ffffff;
 }
 
+.btn{
+  background-color:#ffcc66;
+}
+
+
+.text-d{
+  color:#000000;
+  font-family: 'Sawarabi Mincho', sans-serif;
+}
+.text{
+  color:#ffffff;
+  font-family: 'Sawarabi Mincho', sans-serif;
+}
+
 #pub_products{
   display:flex;
   flex-wrap:wrap;
@@ -95,50 +109,7 @@ header{
 #member-title{
  font-family: 'Noto Sans JP', sans-serif;
 }
-// マイページの表のアレンジ↓
-#member-table{
-  width: 100%;
-  border-collapse: collapse;
-}
 
-#member-table tr{
-  border-bottom: solid 2px white;
-}
-
-#member-table tr:last-child{
-  border-bottom: none;
-}
-
-#member-table th{
-  position: relative;
-  text-align: left;
-  width: 30%;
-  background-color: #52c2d0;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-}
-
-#member-table th:after{
-  display: block;
-  content: "";
-  width: 0px;
-  height: 0px;
-  position: absolute;
-  top:calc(50% - 10px);
-  right:-10px;
-  border-left: 10px solid #52c2d0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-}
-#member-table td{
-  text-align: left;
-  width: 70%;
-  text-align: center;
-  background-color: #eee;
-  padding: 10px 0;
-}
-// ↑ここまで表のアレンジ
 
 footer{
   background-color:#deb887;
@@ -162,6 +133,5 @@ footer{
   width:400px;
   height:250px;
   }
-
 
 }
