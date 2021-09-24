@@ -39,11 +39,13 @@
       <div class = "field">
         <p><%= @order.payment_method %></p>
       </div><br>
-      <%= form_with model: @order,url: admin_order_path, method: :patch, local: true do |f| %>
+      <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
         <div class = "field">
           <p>
+
             <%= f.select :status, Order.statuses.keys.to_a %>
-            <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+
+            <%= f.submit "更新", class: "btn btn-outline-success" %>
           </p>
         </div><br>
       <% end %>
@@ -78,9 +80,12 @@
               </td>
                 <% @order.price += @all_price %>
               <td>
-                <%= form_with model:[@order,order_product], url: admin_order_order_product_path(@order.id,order_product.id), method: :patch, local: true do |f| %>
+
+                <%= form_with model: order_product, url: admin_order_order_product_path(@order.id, order_product.id), method: :patch, local: true do |f| %>
+
                   <%= f.select :production_status, OrderProduct.production_statuses.keys.to_a %>
-                  <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+                  <%= f.submit "更新", class: "btn btn-outline-success" %>
+
                 <% end %>
               </td>
             </tr>
