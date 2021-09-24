@@ -1,49 +1,57 @@
 <div class="row">
-  <div class="" style="width:100%; height:600px;">
-    <div id="top-card"class="card">
-      <img id="top-card-img" class="card-img " src="assets/8877a9ba-c806-4bce-8ca5-89fda38a11c2.jpeg">
-      <div id="top-card-text" class="card-img-overlay text-dark text-center">
+  <div id="top-card"class="card" style="width:100%; height:800px;">
+    <div id="top-img-scroll">
+      <%= image_tag "10790_report_title_640_360.jpg",id: "top-card-img"  %>
+      <%= image_tag "8877a9ba-c806-4bce-8ca5-89fda38a11c2.jpeg",id: "top-card-img"  %>
+      <%= image_tag "10562x3315826x1.jpg",id: "top-card-img"  %>
+    </div>
+  </div>
+</div>
+<div class="row" style="margin-top:500px;">
+   <div id="top-card-text" class="text-dark text-center">
         <p>ようこそ、<strong>ながのCAKE</strong>へ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
           会員でない方も商品の閲覧はできますが、<br>
           購入には会員登録が必要になります。
         </p>
-      </div>
     </div>
-  </div>
 </div>
-<div class="row" style="margin-top:100px; margin-bottom:100px;">
+<div class="row" style="margin-top:300px; margin-bottom:100px;">
   <div class="mt-5" style="width:100%;">
-    <h3 class="text-main">新着商品</h3>
+    <h3 class="text-main ">新着商品</h3>
     <div id="top-pub_products" >
       <!--eachのひとかたまり-->
       <% @products.each do |product| %>
-      <div id="pub_product">
+      <div id="pub_product" class="card shadow-sm">
         <!--商品画像-->
         <div class="card-img-top">
-          <%= attachment_image_tag product,:image ,:fill,150,100,fallback: "no_image.png",size: "150x100" %>
+          <%= attachment_image_tag product,:image ,:fill,350,250,fallback: "no_image.png",size: "350x250" %>
         </div>
         <!--商品ネーム-->
-        <div>
-          <%= link_to public_product_path(product),class:"text-d" do%>
-            <%= product.name %>
-          <% end %>
-        </div>
-        <!--商品金額-->
-        <div>
-          <% @product_price = product.tax_out_price * 1.1 %>
-          ￥<%= @product_price.floor.to_s(:delimited) %>（税込）
+        <div class="card-body">
+          <div class="mb-2">
+            <%= link_to public_product_path(product),class:"text-dark",style:"font-size:20px;" do%>
+              <%= product.name %>
+            <% end %>
+          </div>
+          <!--商品金額-->
+          <div style="font-size:15px;">
+            <% @product_price = product.tax_out_price * 1.1 %>
+            ￥<%= @product_price.floor.to_s(:delimited)%>（税込）
+          </div>
         </div>
       </div>
     <% end %>
     </div>
-    <button class="btn btn-o text-center mt-5" style="margin:0 auto;">
-      <%= link_to "全ての商品を見る", public_products_path ,class: "text-o"%>
-    </button>
+    <div id="top-btn">
+      <button class="btn btn-o mt-5 justify-content-center">
+        <%= link_to "全ての商品を見る", public_products_path ,class: "text-o"%>
+      </button>
+    </div>
   </div>
 </div>
 <div class="row mt-5">
-  <div class="col-10 mt-5">
+  <div class="mt-5" style="width:100%;">
     <!--ジャンル一覧を部分テンプレートで表示-->
     <%= render "public/products/genre", gernres: @genres %>
   </div>

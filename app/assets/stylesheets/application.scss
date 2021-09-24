@@ -51,18 +51,20 @@ header{
   flex-wrap:wrap;
 }
 #pub_product{
-  margin-right:20px;
-  margin-top:50px;
+  margin-right:50px;
+  margin-top:100px;
+  margin-left:20px
 }
 .card-img{
   width:100%;
   height:100px;
 }
-.product_img{
+#product_img{
   width:300px;
   height:200px;
 }
 
+// PUBLIC/TOPの
 #top-card{
   width:100%;
   padding:0;
@@ -71,14 +73,17 @@ header{
 
 #top-card-img{
   width:100%;
-  height:600px;
+  height:800px;
+}
 
+
+#top-btn{
+  display:flex;
+  justify-content:center;
+  margin-top:60px;
 }
 #top-card-text{
-  position:absolute;
-  padding-right:20%;
-  padding-left:20%;
-  margin-top:10%;
+  width:100%;
 }
 
 #top-card-text p{
@@ -98,6 +103,23 @@ header{
 #about-card-img{
   width:100%;
   height:400px;
+}
+
+// 商品詳細画面のCSS
+
+#product-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#product-img-detail{
+  width:600px;
+  height:400px;
+}
+
+#product-text-detail{
+  margin-top:50px;
 }
 
 // マイページのタイトル全てのフォント

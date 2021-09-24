@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col-10  ">
        <%= render "public/shared/error_messages",resource: @member%>
-      <h2 class="mt-5 text-center">会員情報編集</h2>
+      <h2 class="mt-5 text-main">会員情報編集</h2>
       <%= form_with model: @member, url: public_member_path(@member.id), local: true do |f| %>
       <div class="form-group mt-5">
         <%= f.label :名前 ,class:"col-4 mr-2"%>
@@ -31,9 +31,9 @@
         <%= f.text_field :phone_number ,class: "form-control-static col-6",style: "width:200px;"%>
       </div>
       <div class="actions mt-5 text-center" style="margin-bottom: 200px;">
-        <button class="btn btn-success text-white">編集内容を保存</button>
+        <button class="btn btn-o">編集内容を保存</button>
         <% f.submit %>
-        <button class="btn btn-danger text-white ml-5"><%= link_to "退会する",public_members_path,method: :get ,class: "text-white"%></button>
+        <button class="btn btn-r ml-5"><%= link_to "退会する",public_members_path,method: :get ,class: "text-r"%></button>
       </div>
       <%end %>
     </div>

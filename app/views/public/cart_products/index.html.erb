@@ -6,13 +6,13 @@
       <% if @member_cart_products.exists? %>
       <!--カート内商品全て削除ボタン-->
       <div class="text-right">
-        <button class="btn btn-outline-danger">
-          <%= link_to "カートを空にする",public_cart_product_destroy_path, method: :delete, class: "text-dark" %>
+        <button class="btn btn-r">
+          <%= link_to "カートを空にする",public_cart_product_destroy_path, method: :delete, class: "text-r" %>
         </button>
       </div>
       <!--カート内商品一覧-->
       <table class="table table-hover table-bordered mt-5">
-        <thead class="thead">
+        <thead class="thead text-white">
           <tr>
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -71,7 +71,7 @@
       <!--合計金額用のテーブル-->
       <table align="right" style="width:350px; ">
         <tbody class="table table-bordered" >
-          <th class="table-active">合計金額</th>
+          <th class="thead text-white">合計金額</th>
           <td>￥<%= @sum.floor.to_s(:delimited)   %></td>
         </tbody>
       </table>
@@ -83,7 +83,7 @@
       </div>
       <!--注文情報入力画面へ-->
       <div class="text-center my-4">
-        <button class="btn"><%= link_to "情報入力に進む",new_public_order_path %></button>
+        <button class="btn btn-o"><%= link_to "情報入力に進む",new_public_order_path, class:"text-o"%></button>
       </div>
 
       <!--カート内商品が存在しない場合-->

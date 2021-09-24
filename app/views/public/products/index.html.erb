@@ -1,37 +1,43 @@
-<div class="container　mt-5" style="margin-bottom:500px;">
-  <div class="row mt-5">
-    <div class="col-md-4 mt-5">
-      <!--ジャンル一覧を部分テンプレートで表示-->
-      <%= render "public/products/genre", gernres: @genres %>
-    </div>
-    <div class="col-md-8 offset-md-0 col-9 offset-2 mt-5">
-      <h2  class="d-inline">商品一覧</h2><p class="d-inline">（全<%= @all_products.count  %>件）</p>
-      <!--商品一覧-->
-      <div id="pub_products">
-        <!--eachのひとかたまり-->
-        <% @products.each do |product| %>
-        <div id="pub_product">
-          <!--商品画像-->
-          <div id="product_img" class=" card-img-top">
-            <%= attachment_image_tag product,:image ,fallback: "no_image.png" ,class:"card-img"%>
-          </div>
-          <!--商品ネーム-->
-          <div class="">
-            <%= link_to public_product_path(product),class: "text-dark" do %>
-              <%= product.name  %>
+<div class="row" style="margin-top:100px; margin-bottom:100px;">
+  <div class="mt-5" style="width:100%;">
+    <h3 class="text-main ">商品一覧</h3>
+    <div id="top-pub_products" >
+      <!--eachのひとかたまり-->
+      <% @products.each do |product| %>
+      <div id="pub_product" class="card shadow-sm">
+        <!--商品画像-->
+        <div class="card-img-top">
+          <%= attachment_image_tag product,:image ,:fill,300,200,fallback: "no_image.png",size: "300x200" %>
+        </div>
+        <!--商品ネーム-->
+        <div class="card-body">
+          <div class="mb-2">
+            <%= link_to public_product_path(product),class:"text-dark",style:"font-size:20px;" do%>
+              <%= product.name %>
             <% end %>
           </div>
           <!--商品金額-->
-          <div>
+          <div style="font-size:15px;">
             <% @product_price = product.tax_out_price * 1.1 %>
-            ￥<%= @product_price.floor.to_s(:delimited) %>（税込）
+            ￥<%= @product_price.floor.to_s(:delimited)%>（税込）
           </div>
         </div>
-        <% end %>
       </div>
+    <% end %>
     </div>
   </div>
-  <div class="d-flex justify-content-center mt-5">
+</div>
+<div class="d-flex justify-content-center mt-5">
     <%= paginate @products %>
+</div>
+<div class="row mt-5">
+  <div class="mt-5" style="width:100%;">
+    <!--ジャンル一覧を部分テンプレートで表示-->
+    <%= render "public/products/genre", gernres: @genres %>
   </div>
 </div>
+
+
+
+
+
