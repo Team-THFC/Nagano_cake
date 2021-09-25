@@ -1,8 +1,6 @@
 <div class = "container">
-  <h2 class= "head-line title_h2 text-dark p-1 m-5 rounded-lg border border-dark">
-    <%= @member.last_name %><%= @member.first_name %>さんの会員詳細
-  </h2>
-  <div class = "row mt-4">
+  <h5  class="title-q"><%= @member.last_name %><%= @member.first_name %>さんの会員情報編集</h5>
+  <div class = "row mt-4 mb-3">
     <div class = "col-sm-3" >
       <div class = "field">
         <p>顧客ID</p>
@@ -60,8 +58,8 @@
       </div>
     </div>
   </div>
-  <div class="col-md-7 col-md-offset-7 mb-5 mt-2 text-right">
-    <%= link_to "編集する",edit_admin_member_path(@member), class: "glyphicon glyphicon-pencil btn btn-success mr-5" %>
-    <%= link_to "注文履歴一覧を見る", admin_root_url, class: "glyphicon glyphicon-pencil btn btn-primary mr-5" %>
+  <div class="col-sm-5 col-md-offset-7 mb-5 mt-2 text-right">
+    <%= link_to "編集する",edit_admin_member_path(@member), class: "glyphicon glyphicon-pencil btn btn-o mr-5 ml-2" %>
+    <%= link_to "注文履歴一覧を見る", admin_root_url, class: "glyphicon glyphicon-pencil btn btn-b mr-5 ml-5" %>
   </div>
 </div>

@@ -1,7 +1,7 @@
-<din class = "container">
+<din class = "container" style="margin-bottom: 500px;">
   <div class = "row">
     <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2 class="head-line text-left title_h2">配送先登録/一覧</h2>
+      <h4 class= "text-main">配送先登録/一覧</h4>
       <%= form_with model: @address,url:public_addresses_path, local: true do |f| %>
       <div class = "col-sm-10">
         <div class = "form-group">
@@ -16,12 +16,12 @@
           <%= f.label :"宛名" ,class: "col-xs-3 mr-5 control-label" %>
           <%= f.text_field :name, placeholder:"令和道子", class: "col-sm-4 form-control-static name" %>
         </div>
-        <%= f.submit '新規登録' ,class: "col-xs-2 pull-right btn-lg btn-success" %>
+        <%= f.submit '新規登録' ,class: "pull-right btn btn-b", style:"text-align: center;" %>
       </div>
       <% end %>
       <% if @member_addresses.exists? %>
       <table class = "table table-hover table-bordered m-5">
-        <thead class = "bg-light">
+        <thead class = "thead">
           <tr>
             <th class = "header1">郵便番号</th>
             <th class = "header2">住所</th>
@@ -43,8 +43,8 @@
                 <%= address.name %>
               </td>
               <td>
-                <%= link_to "編集する", edit_public_address_path(address), class: "btn btn-success" %>
-                <%= link_to "削除する", public_address_path(address), method: :delete, class: "btn btn-danger" %>
+                <%= link_to "編集する", edit_public_address_path(address), class: "btn btn-o mr-3 ml-3" %>
+                <%= link_to "削除する", public_address_path(address), method: :delete, class: "btn btn-r" %>
               </td>
             </tr>
           <% end %>
