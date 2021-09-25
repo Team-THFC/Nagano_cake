@@ -3,7 +3,7 @@
   <div class = "row mb-5">
     <div class = "col-8 mr-5">
       <table class = "table table-bordered table-condensed mt-3">
-        <strong class = "text-strong">注文情報</strong>
+        <strong>注文情報</strong>
         <tbody>
           <tr>
             <th class= "thead">注文日</th>
@@ -28,13 +28,13 @@
       </table>
     </div>
     <div class = "col-xs-3 col-xs-offset-1 billing">
-      <strong class = "text-strong">請求情報</strong>
+      <strong>請求情報</strong>
       <table class = "table table-bordered table-condensed mt-3" >
         <tr>
           <th class= "thead" >商品合計</th>
           <td>
             <% @all_product = @order.total_payment - @order.shipping_price %>
-            ￥<%= @all_product  %>
+            ￥<%= @all_product.floor.to_s(:delimited)%>
           </td>
         </tr>
         <tr>
@@ -48,7 +48,7 @@
       </table>
     </div>
     <div class = "col-sm-9">
-      <strong class = "text-strong">注文内容</strong>
+      <strong>注文内容</strong>
       <table class="table table-bordered table-condensed mt-3">
         <thead class= "thead">
           <tr>
