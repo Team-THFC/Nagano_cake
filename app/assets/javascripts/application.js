@@ -45,3 +45,26 @@ $(document).on('turbolinks:load',function () {
     hidePrevious : false
   });
 });
+
+$(document).on('turbolinks:load',function(){
+  $('#page-top').on('click',function(event){
+    $('body,html').animate({
+      scrollTop:0
+    },800);
+    event.preventDefault();
+  });
+});
+
+$(document).on('turbolinks:load',function() {
+    var pagetop = $('#page-top');
+    pagetop.hide();
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {  //100pxスクロールしたら表示
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+        }
+    });
+});
+
+
