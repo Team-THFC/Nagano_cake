@@ -1,9 +1,9 @@
 
 
-<div class="container">
-  <div class="row mt-5">
-    <div class="col-10  ">
-      <h2 class="text-center">新規会員登録</h2>
+<div class="container" style="margin-bottom: 20px;">
+  <div class="row">
+    <div class="col-10">
+      <h4 class = "title-q mt-5 ml-3">新規会員登録</h4>
       <%= form_with model: @member, url: member_registration_path,method: :post, local: true do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
       <div class="form-group mt-5">
@@ -40,13 +40,13 @@
         <%= f.label :パスワード（確認用）,class:"col-4 mr-2" %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control-static col-6",style: "width:200px;" %>
       </div>
-      <div class="actions mt-5 text-center" >
-        <button class="btn btn-info text-white" style="width: 150px">新規登録</button>
+      <div class="actions text-center" >
+        <button class="btn btn-b">新規登録</button>
         <% f.submit %>
       </div>
       <%end %>
-      <div class="mt-5" style="margin-bottom: 200px;">
-        <h3 c >既に登録済みの方</h3>
+      <div>
+        <h3>既に登録済みの方</h3>
         <%= render "public/shared/links" %>
       </div>
     </div>
