@@ -1,10 +1,10 @@
-<div class = "container">
+<div class = "container" style="margin-bottom: 80px;">
   <h4 class="text-main">注文情報</h4>
   <div class = "row">
     <div class = "col-8 ">
       <% if @member_cart_products.exists? %>
         <table class = "table table-hover table-bordered float-left mt-5">
-          <thead class="thead">
+          <thead class="thead ">
             <tr>
               <th>商品名</th>
               <th>単価（税込）</th>
@@ -42,17 +42,17 @@
     <div class = "col-4">
       <table class = "table table-hover table-condensed table-bordered float-right mt-5" >
         <tr>
-          <th class= "thead-a" >送料</th>
+          <th class= "thead" >送料</th>
           <td>￥<%= @order.shipping_price %></td>
         </tr>
         <tr>
-          <th class= "thead-a" >商品合計</th>
+          <th class= "thead" >商品合計</th>
           <td>
             ￥<%= @order.price.floor.to_s(:delimited) %>
           </td>
         </tr>
         <tr>
-          <th class= "thead-a">請求金額</th>
+          <th class= "thead">請求金額</th>
           <td>
             <% @order.total_payment = @order.shipping_price + @order.price %>
             ￥<%= @order.total_payment.floor.to_s(:delimited) %>

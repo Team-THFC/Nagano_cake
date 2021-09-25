@@ -3,14 +3,14 @@
     <div class = "col-10 offset-1">
       <h4 class= "text-main">会員情報入力</h4>
       <%= form_with model: @order,url:confirm_public_orders_path, local: true  do |f| %>
-        <h5 class="col-xs-3 sub-head text-strong"><strong>支払い方法</strong></h5>
+        <h5 class="col-xs-3 sub-head"><strong>支払い方法</strong></h5>
         <div class = "form-group col-sm-4">
           <%= f.radio_button :payment_method, :"クレジットカード", checked: true %> <span>クレジットカード</span>
         </div>
         <div class = "form-group col-sm-4 ">
           <%= f.radio_button :payment_method, :"銀行振込" %> <span>銀行振込</span>
         </div>
-        <h5 class="col-xs-3 sub-head text-strong"><strong>お届け先</strong></h5>
+        <h5 class="col-xs-3 sub-head"><strong>お届け先</strong></h5>
         <div class = "form-group col-sm-12">
           <%= f.radio_button :addresses,  "residence", checked: true  %> <span>ご自身の住所</span><br>
           <%= @member.postal_code %> <%= @member.address %> <br>
