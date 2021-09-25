@@ -1,16 +1,15 @@
-<div class = "container">
+<div class = "container" style="margin-bottom: 255px;">
   <div class="row">
     <div class="col-10 offset-2">
-      <h2 class="head-line title_h2 text-left m-5">管理者ログイン</h2>
-
+      <h4 class= "title-q mt-5 ml-3">管理者ログイン</h4>
        <%= form_with model: @admin, url:  admin_session_path,local: true do |f| %>
         <div class="field">
-          <%= f.label :"メールアドレス", class: "col-sm-2 control-label" %>
+          <%= f.label :"メールアドレス", class: "col-sm-2 control-label mt-3 mb-4" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", class: "col-sm-8 form-control-static" %>
         </div>
 
         <div class="field">
-          <%= f.label :"パスワード", class: "col-sm-2 control-label" %>
+          <%= f.label :"パスワード", class: "col-sm-2 control-label mb-4" %>
           <%= f.password_field :password, autocomplete: "current-password",  class: "col-sm-8 form-control-static" %>
         </div>
 
@@ -22,7 +21,7 @@
         <% end %>
 
         <div class="actions col-xs-6 text-center ">
-          <%= f.submit " ログイン ", class: "btn btn-primary pull-right btn-lg " %>
+          <%= f.submit " ログイン ", class: "btn btn-b pull-right btn-lg " %>
         </div>
       <% end %>
 
