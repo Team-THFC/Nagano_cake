@@ -21,7 +21,23 @@
   justify-content: center;
 }
 
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;
+  /*文字の色を変える*/
+}
 
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+.page-item.active{
+  color:#ffcc66 !important;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}
 
 header{
   background-color:#deb887;
@@ -211,9 +227,13 @@ footer h4{
   #search1{
   display:none;
   }
-
   #search2{
   display:block;
+  }
+
+  #search2 form{
+  display:flex;
+  justify-content:start;
   }
 
   #pub_products{
