@@ -1,13 +1,13 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-md navbar-light">
     <div class = "container">
       <div class="navbar-brand p-3">
         <% if admin_signed_in? %>
         <%# 管理者がログインした時　%>
-          <%= link_to "Nagano CAKE", admin_root_path, class: "btn btn-outline-light btn-lg" %>
+          <%= link_to "Nagano CAKE", admin_root_path, class: " btn-outline-light btn-lg" %>
         <% else %>
         <%# 顧客顧客がログインした時　%>
-          <%= link_to "Nagano CAKE",  public_root_path, class: "btn btn-outline-light btn-lg" %>
+          <%= link_to "Nagano CAKE",  public_root_path, class: "btn-outline-light btn-lg" %>
         <% end %>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbardrop" aria-controls="navbardrop" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,12 +62,17 @@
           </li>
           <% end %>
         </ul>
-        <div class="d-flex justify-content-end mt-3">
+         <div id="search2" class=" mt-3">
         <%= form_with url: public_search_path, method: :get,  local: true do |f|%>
-        <%= f.text_field :keyword, value: @keyword ,placeholder: "Search",class: "form-control form-inline",style: "width:300px;"%>
+        <%= f.text_field :keyword, value: @keyword ,placeholder: "Search",class: " form-control form-control-sm ",style: "width:250px;"%>
         <% end %>
-        </div>
+      </div>
       </div>
     </div>
+        <div id="search1" class=" mt-3">
+        <%= form_with url: public_search_path, method: :get,  local: true do |f|%>
+        <%= f.text_field :keyword, value: @keyword ,placeholder: "Search",class: " form-control form-control-sm ",style: "width:250px;"%>
+        <% end %>
+      </div>
   </nav>
 </header>

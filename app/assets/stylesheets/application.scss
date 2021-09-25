@@ -35,6 +35,9 @@ header{
 .nav-text{
   color:#ffffff;
 }
+
+
+
 .thead{
   background-color:#f5deb3;
 }
@@ -42,23 +45,29 @@ header{
   color:#ffffff;
 }
 
+.btn{
+  background-color:#ffcc66;
+}
+
 #pub_products{
   display:flex;
   flex-wrap:wrap;
 }
 #pub_product{
-  margin-right:20px;
-  margin-top:50px;
+  margin-right:50px;
+  margin-top:100px;
+  margin-left:20px
 }
 .card-img{
-  width:150px;
+  width:100%;
   height:100px;
 }
-.product_img{
+#product_img{
   width:300px;
   height:200px;
 }
 
+// PUBLIC/TOPの
 #top-card{
   width:100%;
   padding:0;
@@ -67,14 +76,17 @@ header{
 
 #top-card-img{
   width:100%;
-  height:400px;
+  height:800px;
+}
 
+
+#top-btn{
+  display:flex;
+  justify-content:center;
+  margin-top:60px;
 }
 #top-card-text{
-  position:absolute;
-  padding-right:20%;
-  padding-left:20%;
-  margin-top:10%;
+  width:100%;
 }
 
 #top-card-text p{
@@ -85,67 +97,58 @@ header{
   font-family: 'Anton', sans-serif;
 }
 
+#top-pub_products{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
 
 #about-card-img{
   width:100%;
   height:400px;
 }
 
+// 商品詳細画面のCSS
+
+#product-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#product-img-detail{
+  width:600px;
+  height:400px;
+}
+
+#product-text-detail{
+  margin-top:50px;
+}
+
 // マイページのタイトル全てのフォント
 #member-title{
  font-family: 'Noto Sans JP', sans-serif;
 }
-// マイページの表のアレンジ↓
-#member-table{
-  width: 100%;
-  border-collapse: collapse;
-}
 
-#member-table tr{
-  border-bottom: solid 2px white;
-}
-
-#member-table tr:last-child{
-  border-bottom: none;
-}
-
-#member-table th{
-  position: relative;
-  text-align: left;
-  width: 30%;
-  background-color: #52c2d0;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-}
-
-#member-table th:after{
-  display: block;
-  content: "";
-  width: 0px;
-  height: 0px;
-  position: absolute;
-  top:calc(50% - 10px);
-  right:-10px;
-  border-left: 10px solid #52c2d0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-}
-#member-table td{
-  text-align: left;
-  width: 70%;
-  text-align: center;
-  background-color: #eee;
-  padding: 10px 0;
-}
-// ↑ここまで表のアレンジ
 
 footer{
   background-color:#deb887;
 }
 
+  #search2{
+  display:none;
+  }
+
 
 @media screen and (max-width:768px) {
+  #search1{
+  display:none;
+  }
+
+  #search2{
+  display:block;
+  }
+
   #pub_products{
   display:block;
   }
@@ -215,6 +218,7 @@ footer{
     margin-bottom:40px;
   }
 
+
   .title-q {
     color: white;
     font-family: serif;
@@ -225,3 +229,4 @@ footer{
     padding: 0.5em;
     border-radius: 20px;
   }
+
