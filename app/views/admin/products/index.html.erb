@@ -25,7 +25,7 @@
               <u><%= link_to product.name,admin_product_path(product.id),class: "text-dark"  %></u>
             </td>
             <td>¥<%= product.tax_out_price.floor.to_s(:delimited)%></td>
-            <td><%= product.genre.genre_name%></td>
+            <td><%= product.genre.genre_name %></td>
             <td>
               <% if product.is_active == true %>
                 <p><i class="text-warning">販売中</i></p>
