@@ -33,7 +33,7 @@ header{
   color:#ffffff;
 }
 .nav-text{
-  color:#ffffff;
+ color: #a0522d;;
 }
 
 
@@ -89,13 +89,26 @@ header{
   width:100%;
 }
 
-#top-card-text p{
-  padding-top:50px;
-  height:200px;
-  font-size:17px;
-  background: rgba(255,255,255,0.6);
-  font-family: 'Anton', sans-serif;
-}
+  .top-flame-image {
+    position: relative;
+    width: 600px;
+    margin: 120px auto 0;
+    margin-bottom: 150px;
+  }
+  .top-flame-image img{
+    width: 100%;
+  }
+
+  .top-flame-image p{
+    color: #a0522d;
+    position: absolute;
+    text-align: center;
+    top: 35%;
+    right: 10%;
+    left: 10%;
+    font-size:18px;
+  }
+
 
 #top-pub_products{
   display:flex;
