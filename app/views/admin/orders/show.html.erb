@@ -95,17 +95,17 @@
     </div>
 
     <div class="col-xs-3 offset-md-1">
-      <table class="table">
+      <table class="table table-hover table-bordered">
         <tr>
-          <th class="info">商品合計</th>
+          <th class="thead">商品合計</th>
           <td>¥<%= @order.price.floor.to_s(:delimited) %></td>
         </tr>
         <tr>
-          <th class="info">送料</th>
+          <th class="thead">送料</th>
           <td>¥<%= @order.shipping_price %></td>
         </tr>
         <tr>
-          <th class="info">請求金額</th>
+          <th class="thead">請求金額</th>
           <td>
             <% @order.total_payment = @order.shipping_price + @order.price %>
             ¥<%= @order.total_payment.floor.to_s(:delimited) %>
