@@ -35,6 +35,9 @@ header{
 .nav-text{
   color:#ffffff;
 }
+
+
+
 .thead{
   background-color:#f5deb3;
 }
@@ -132,8 +135,20 @@ footer{
   background-color:#deb887;
 }
 
+  #search2{
+  display:none;
+  }
+
 
 @media screen and (max-width:768px) {
+  #search1{
+  display:none;
+  }
+
+  #search2{
+  display:block;
+  }
+
   #pub_products{
   display:block;
   }
