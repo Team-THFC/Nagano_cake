@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
-    <h4>商品編集</h4>
+    <h4 class="text-main">商品編集</h4>
     <%= render 'layouts/errors', obj: @product %>
     <%= form_with model:@product,url:"/admin/products/#{@product.id}", local:true do |f| %>
       <div class="form-grop mt-3">
@@ -34,7 +34,7 @@
           <%= f.label :is_active, "販売中止中", {value: :false, style: "display: inline-block;"} %>
         </div>
       <div class="form-grop mt-3">
-        <p class="text-center"><%= f.submit '変更を保存する', class: "button btn btn-success" %></p>
+        <p class="text-center"><%= f.submit '変更を保存する', class: "btn btn-o" %></p>
       </div>
 
 

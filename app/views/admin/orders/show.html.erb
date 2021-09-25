@@ -1,5 +1,5 @@
-<div class="container mt-5 " style="margin-bottom:250px;">
-  <h4>注文履歴詳細</h4>
+<div class="container mt-5">
+  <h4 class="text-main">注文履歴詳細</h4>
   <div class="row">
     <div class="col-sm-2">
       <div class = "field">
@@ -39,11 +39,12 @@
       <div class = "field">
         <p><%= @order.payment_method %></p>
       </div><br>
-      <%= form_with model: @order,url: admin_order_path, method: :patch, local: true do |f| %>
+      <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
         <div class = "field">
           <p>
+
             <%= f.select :status, Order.statuses.keys.to_a %>
-            <%= f.submit "更新", class: "btn btn-outline-success btn-sm" %>
+            <%= f.submit "更新", class: "btn-o btn btn-sm" %>
           </p>
         </div><br>
       <% end %>
@@ -53,13 +54,13 @@
   <div class="row">
     <div class="col-md-7">
       <table class="table table-hover table-bordered table-inverse">
-        <thead class="thead-color">
+        <thead class="thead">
           <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
             <th>数量</th>
             <th>小計</th>
-            <th>制作ステータス</th>
+            <th>製作ステータス</th>
           </tr>
         </thead>
         <tbody>
@@ -78,9 +79,13 @@
               </td>
                 <% @order.price += @all_price %>
               <td>
-                <%= form_with model:[@order,order_product], url: admin_order_order_product_path(@order.id,order_product.id), method: :patch, local: true do |f| %>
+
+                <%= form_with model: order_product, url: admin_order_order_product_path(@order, order_product), method: :patch, local: true do |f| %>
+
                   <%= f.select :production_status, OrderProduct.production_statuses.keys.to_a %>
-                  <%= f.submit "更新", class: "btn btn-outline-success btn-sm" %>
+
+                  <%= f.submit "更新", class: "btn-o btn btn-sm" %>
+
                 <% end %>
               </td>
             </tr>
