@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-5 mx-auto">
         <h4 class="text-main">ジャンル編集</h4>
         <%= render 'layouts/errors', obj: @genre %>
         <%= form_with model:@genre,url:"/admin/genres/#{@genre.id}", local: true do |f| %>
