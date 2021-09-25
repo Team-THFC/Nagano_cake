@@ -7,6 +7,7 @@
         <div class="form-grop">
           <label for="ganre-name">ジャンル名</label>
           <%= f.text_field :genre_name %>
+          <%= f.attachment_field :genre_image%>
           <%= f.submit '変更を保存',class: "btn-o btn" %>
         </div>
         <% end %>

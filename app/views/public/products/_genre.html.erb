@@ -1,5 +1,5 @@
 
-<div class="row" style="margin-top:100px; margin-bottom:100px;">
+<div class="row" style="margin-top:100px; margin-bottom:300px;">
   <div class="mt-5" style="width:100%;">
     <h3 class="text-main ">ジャンル検索</h3>
     <div id="top-pub_products" >
@@ -8,7 +8,7 @@
       <div id="pub_product" class="card shadow-sm">
         <!--ジャンル画像-->
         <div class="card-img-top">
-
+          <%= attachment_image_tag genre,:genre_image ,:fill,200,150,fallback: "no_image.png",size: "200x150" %>
         </div>
         <!--ジャンルネーム-->
         <div class="card-body">
