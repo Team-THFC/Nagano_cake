@@ -81,7 +81,7 @@
             <%= f.hidden_field :total_payment %>
             <%= f.hidden_field :ship, value: @ship %>
             <%= f.submit '完了する',class: "glyphicon glyphicon-zoom-in btn btn-o mr-5 ml-5"%>
-            <%= link_to '会員情報入力へ戻る', new_public_order_path(@order), class: "text-b" %>
+            <%= link_to '戻る', new_public_order_path(@order), class: "btn-b btn" %>
           <% end %>
         </div>
       </div>
